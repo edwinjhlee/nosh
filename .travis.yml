@@ -15,7 +15,7 @@ os:
   - windows
 
 node_js:
-  - 10
+  - "10"
 
 install:
   - npm install pkg -g
@@ -37,7 +37,7 @@ deploy:
   provider: releases
   api_key: $GH_TOKEN  # set in travis website
   file_glob: true
-  file: *
+  file: "*"
   overwrite: true
   skip_cleanup: true
   on:
