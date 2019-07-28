@@ -1,0 +1,43 @@
+language: node_js
+
+# only run build on master and tag
+branches:
+  only:
+  - master
+  - /^v.*$/
+
+env:
+  - APP=$TRAVIS_OS_NAME-app
+
+os:
+  - linux
+  - osx
+  - windows
+
+node_js:
+  - 10
+
+install:
+  - npm install pkg -g
+  - npm install
+
+script:
+  - mkdir release
+  - npm run tsc
+  - if [ "$TRAVIS_OS_NAME" != "windows" ]; then pkg dist/main.js --options no-warnings -o release/$APP -c package.json    ; fi
+  - if [ "$TRAVIS_OS_NAME" = "windows" ]; then pkg dist/main.js --options no-warnings -o release/$APP.exe -c package.json    ; fi
+
+before_deploy:
+  - cd release
+  - if [ "$TRAVIS_OS_NAME" != "windows" ]; then zip $APP.zip $APP    ; fi
+  - if [ "$TRAVIS_OS_NAME" = "windows" ]; then /c/Program\ Files/7-Zip/7z.exe a $APP.zip ${APP}.exe    ; fi
+
+deploy:
+  provider: releases
+  api_key: $GH_TOKEN  # set in travis website
+  file_glob: true
+  file: *
+  skip_cleanup: true
+  on:
+    tags: true      # only deploy tag commit
+    node_js: '10'   # only deploy node_js 10 runtime
