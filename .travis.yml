@@ -22,6 +22,7 @@ install:
   - npm install
 
 script:
+  - TRAVIS_TAG=latest-dev
   - mkdir release
   - npm run tsc
   - if [ "$TRAVIS_OS_NAME" != "windows" ]; then pkg dist/main.js --options no-warnings -o release/$APP -c package.json    ; fi
@@ -37,6 +38,7 @@ deploy:
   api_key: $GH_TOKEN  # set in travis website
   file_glob: true
   file: *
+  overwrite: true
   skip_cleanup: true
   on:
     tags: true      # only deploy tag commit
