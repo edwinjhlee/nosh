@@ -30,8 +30,8 @@ script:
 
 before_deploy:
   - cd release
-  - if [ "$TRAVIS_OS_NAME" != "windows" ]; then zip $APP.zip $APP    ; fi
-  - if [ "$TRAVIS_OS_NAME" = "windows" ]; then /c/Program\ Files/7-Zip/7z.exe a $APP.zip ${APP}.exe    ; fi
+  - if [ "$TRAVIS_OS_NAME" != "windows" ]; then zip $APP.zip $APP ; fi
+  - if [ "$TRAVIS_OS_NAME" = "windows" ]; then /c/Program\ Files/7-Zip/7z.exe a $APP.zip ${APP}.exe ; fi
 
 deploy:
   provider: releases
