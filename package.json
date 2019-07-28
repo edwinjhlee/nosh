@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "",
   "bin": {
-    "nosh": "./bin/nosh.sh"
+    "nosh": "./bin/nosh.js"
   },
   "main": "dist/main.js",
   "typings": "dist/main.d.ts",
