@@ -3,36 +3,26 @@
   "version": "0.0.0",
   "description": "",
   "bin": {
-    "vvsh": "./bin/vvsh.sh"
+    "nosh": "./bin/nosh.sh"
   },
   "main": "dist/main.js",
   "typings": "dist/main.d.ts",
   "scripts": {
-    "pkg": "pkg dist/main.js --options no-warnings -o bin/pkg/vvsh.linux.exe -c package.json",
-    "pkg-linux": "mkdir -p bin/pkg && npm run pkg && cd bin/pkg && zip vvsh.linux.exe.zip vvsh.linux.exe && cd -",
-    "pkg-mac": "mkdir -p bin/pkg && npm run pkg && cd bin/pkg && zip vvsh.linux.exe.zip vvsh.linux.exe && cd -",
-    "nexe-mac": "mkdir -p bin/nexe && nexe bin/vvsh.js -r dist/main.js -t macos -o bin/nexe/vvsh.mac.exe && cd bin/nexe && zip vvsh.mac.exe.zip vvsh.mac.exe && cd -",
-    "nexe-linux": "mkdir -p bin/nexe && nexe bin/vvsh.js -r dist/main.js -t linux -o bin/nexe/vvsh.linux.exe && cd bin/nexe && zip vvsh.linux.exe.zip vvsh.linux.exe && cd -",
-    "nexe-win": "mkdir -p bin/nexe && nexe bin/vvsh.js -r dist/main.js -t win -o bin/nexe/vvsh.win.exe && cd bin/nexe && zip vvsh.win.exe.zip vvsh.win.exe && cd -",
-    "nexe-all": "npm run tsc && rm -rf bin/nexe && npm run nexe-mac && npm run nexe-linux && npm run nexe-win;",
-    "lintfix": "tslint --fix --project .",
-    "lintfix1": "tslintlevel=1 tslint --fix --project .; exit 0",
-    "lintfix2": "tslintlevel=2 tslint --fix --project .; exit 0",
     "pubpub": "npm run tsc && npm publish --access public",
     "tsc": "rm -rf dist && tsc && tsc -d",
     "test": "exit 0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/edwinjhlee/vvsh.git"
+    "url": "git+https://github.com/lteam18/nosh.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/edwinjhlee/vvsh/issues"
+    "url": "https://github.com/lteam18/nosh/issues"
   },
-  "homepage": "https://github.com/edwinjhlee/vvsh#readme",
+  "homepage": "https://github.com/lteam18/nosh#readme",
   "dependencies": {
     "@typeshell/env": "latest",
     "ts-node": "^8.2.0",
