@@ -7,7 +7,7 @@ branches:
   - /^v.*$/
 
 env:
-  - APP=$TRAVIS_OS_NAME-app
+  - APP=nosh.$TRAVIS_OS_NAME
 
 os:
   - linux
