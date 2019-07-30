@@ -9,11 +9,11 @@ import fs from "fs"
 
     const filepath = process.argv[2]
     const str = fs.readFileSync(filepath).toString()
-    if (process.env["NOSH"] !== "js") {
-        let compiled = require("./tseval").compile(str)
-        eval(compiled)
-        return
-    }
 
-    eval(str)
+    switch (process.env["ENGINE"]) {
+        case "js": return require("./run/js").run(str)
+        case "ts": return require("./run/ts").run(str)
+        default:
+            return require("./run/auto").run(str)
+    }
 })()
