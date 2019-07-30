@@ -11,9 +11,8 @@ import fs from "fs"
     const str = fs.readFileSync(filepath).toString()
 
     switch (process.env["ENGINE"]) {
-        case "js": return require("./run/js").run(str)
-        case "ts": return require("./run/ts").run(str)
-        default:
-            return require("./run/auto").run(str)
+        case "js":  return require("./run/js").run(str)
+        case "ts":  return require("./run/ts").run(str)
+        default:    return require("./run/auto").run(str)
     }
 })()
