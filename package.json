@@ -24,7 +24,9 @@
   },
   "homepage": "https://github.com/lteam18/nosh#readme",
   "dependencies": {
+    "@types/node": "^10.14.14",
     "@typeshell/env": "latest",
+    "axios": "^0.19.0",
     "ts-node": "^8.2.0",
     "typescript": "^3.2.4"
   },
