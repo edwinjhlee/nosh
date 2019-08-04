@@ -8,13 +8,15 @@ const EVAL_INSTANCE = { input: '', output: '', version: 0, lines: 0 }
 
 const option = {
     compilerOptions: {
-        "target": "esnext",
+        "target": "ESNEXT",
         "module": "commonjs",
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        // "lib": ["ES2015"]
     },
     skipProject: true
 }
 
+/*
 export function tseval(code: string, module: string){
 
     const tmp = join(process.cwd(), "nodeshell." +  (10000000 + Math.random() * 10000000) + ".ts")
@@ -48,12 +50,14 @@ export function tseval(code: string, module: string){
     }
 
 }
+*/
 
 export function compile(code: string){
 
     const tsnode = require("ts-node")
     const service = tsnode.register({
-        ignoreDiagnostics: [2307, 2580],
+        // ignoreDiagnostics: [2307, 2580],
+        ignoreDiagnostics: [2307, 2580, 2697, 2318],
         ...option
     })
     const compile_output = service.compile(code, EVAL_FILENAME, 0)
